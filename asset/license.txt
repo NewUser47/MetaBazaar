@@ -1,0 +1,11 @@
+Model Information:
+* title:	In Situ Ege Wave Carpet Immersive Visualisation
+* source:	https://sketchfab.com/3d-models/in-situ-ege-wave-carpet-immersive-visualisation-a86b55dce38e499b95d3f4d87d771419
+* author:	Aaron Openshaw (https://sketchfab.com/aaronopenshaw)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "In Situ Ege Wave Carpet Immersive Visualisation" (https://sketchfab.com/3d-models/in-situ-ege-wave-carpet-immersive-visualisation-a86b55dce38e499b95d3f4d87d771419) by Aaron Openshaw (https://sketchfab.com/aaronopenshaw) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
