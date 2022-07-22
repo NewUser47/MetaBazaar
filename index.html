@@ -6,6 +6,7 @@
   <body>
     <a-scene>
       <a-assets>
+        <audio id="background" src="asset/audio/background.mp3"></audio>
         <a-asset-item
           id="tree"
           src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/tree-lime/model.gltf"
@@ -14,30 +15,35 @@
           id="tree1"
           src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/tree-lime/model.gltf"
         ></a-asset-item>
-        <a-asset-item id="building" src="asset/scene.gltf"></a-asset-item>
+        <a-asset-item id="building1" src="asset/building1/scene.gltf"></a-asset-item>
+        <a-asset-item id="building2" src="asset/building2/scene.gltf"></a-asset-item>
+        <a-asset-item id="road" src="asset/road/scene.gltf"></a-asset-item>
       </a-assets>
-      <a-entity environment="preset: poison"> </a-entity>
+      <a-entity environment="preset: tron "
+      sound="src:#background; autoplay:true; loop:true; positional:false"> </a-entity>
       <a-entity position="3.5 0 -25" gltf-model="#tree"></a-entity>
       <a-entity position="-25 0 -25" gltf-model="#tree1"></a-entity>
-      <a-entity position="19 0.6 -11" gltf-model="#building"></a-entity>
+      <a-entity position="19 0.7 -11" gltf-model="#building1"></a-entity>
+      <a-entity position="0 0 0" gltf-model="#building2"></a-entity>
+      <a-entity position="0 0 0" gltf-model="#road"></a-entity>
     </a-scene>
     <script>
       // document.onload = () => {
-      let avatarRedirect;
-      if (!localStorage.getItem("Avatar")) {
-        alert(
-          "You do not have a pre-existing avatar. Redirecting you to the avatar creation page."
-        );
-      } else {
-        avatarRedirect = confirm(
-          "Your previous avatar can be recovered. Do you want to proceed? Click cancel to create a new one!"
-        );
-      }
-      if (!avatarRedirect) {
-        window.localStorage.removeItem("Avatar");
-        window.location.href = "./iframe.html";
-      }
-      console.log(avatarRedirect);
+      // let avatarRedirect;
+      // if (!localStorage.getItem("Avatar")) {
+      //   alert(
+      //     "You do not have a pre-existing avatar. Redirecting you to the avatar creation page."
+      //   );
+      // } else {
+      //   avatarRedirect = confirm(
+      //     "Your previous avatar can be recovered. Do you want to proceed? Click cancel to create a new one!"
+      //   );
+      // }
+      // if (!avatarRedirect) {
+      //   window.localStorage.removeItem("Avatar");
+      //   window.location.href = "./iframe.html";
+      // }
+      // console.log(avatarRedirect);
       // };
     </script>
   </body>
