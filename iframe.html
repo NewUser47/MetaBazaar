@@ -52,11 +52,16 @@
     />
 
     <iframe id="frame" class="frame" allow="camera *; microphone *"></iframe>
-    <button id="saveavatar" onclick="window.location.href = 'index.html'">
-      Proceed to next page
+    <button id="saveavatar" onclick="downloadAvatar()">
+      Download your avatar & proceed to the next page
     </button>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+      integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
-      // window.onload(localStorage.setItem("Avatar", ""));
       const subdomain = "demo";
       const frame = document.getElementById("frame");
       frame.src = `https://${subdomain}.readyplayer.me/avatar?frameApi`;
@@ -106,7 +111,6 @@
               }),
             });
             const response = await reviewRes.json();
-            console.log("ss" + response.data);
             if (response.status === "success") {
               localStorage.setItem("Avatar", response.data);
               //successful response - proceeds to download
@@ -140,6 +144,26 @@
       function displayIframe() {
         document.getElementById("frame").hidden = false;
       }
+
+      //download & next page button
+      const downloadAvatar = () => {
+        axios({
+          url: localStorage.getItem("Avatar"),
+          method: "GET",
+          responseType: "blob",
+        }).then((response) => {
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+
+          const link = document.createElement("a");
+
+          link.href = url;
+          link.setAttribute("download", "3dAvatar.glb");
+          document.body.appendChild(link);
+          link.click();
+        });
+
+        // window.location.href = "index.html";
+      };
     </script>
   </body>
 </html>
