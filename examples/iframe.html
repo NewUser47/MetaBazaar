@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Create your own Avatar</title>
+    <style>
+      html,
+      body {
+        width: 1080px;
+        height: 800px;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+          Droid Sans, Helvetica Neue, sans-serif;
+        padding: 20px;
+        font-size: 14px;
+        border: none;
+        background-color: #fff5e3;
+      }
+      .frame {
+        width: 95vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+      }
+
+      #saveavatar {
+        align-items: center;
+        appearance: none;
+        background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+        border: 0;
+        border-radius: 6px;
+        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
+          rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+        box-sizing: border-box;
+        color: black;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: 'JetBrains Mono', monospace;
+        height: 48px;
+        justify-content: center;
+        line-height: 1;
+        list-style: none;
+        overflow: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+        position: relative;
+
+        text-decoration: none;
+        transition: box-shadow 0.15s, transform 0.15s;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        will-change: box-shadow, transform;
+        font-size: 18px;
+        text-align: center;
+      }
+
+      #saveavatar:focus {
+        box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
+          #3c4fe0 0 -3px 0 inset;
+      }
+
+      #saveavatar:hover {
+        box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+        transform: translateY(-2px);
+      }
+
+      #saveavatar:active {
+        box-shadow: #3c4fe0 0 3px 7px inset;
+        transform: translateY(2px);
+      }
+
+      #avatarnot {
+        appearance: button;
+        background-color: #000;
+        background-image: none;
+        border: 1px solid #000;
+        border-radius: 4px;
+        box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 5px 10px 0;
+        overflow: visible;
+        padding: 12px 40px;
+        text-align: center;
+        text-transform: none;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+      }
+
+      #avatarnot:focus {
+        text-decoration: none;
+      }
+
+      #avatarnot:hover {
+        text-decoration: none;
+      }
+
+      #avatarnot:active {
+        box-shadow: rgba(0, 0, 0, 0.125) 0 3px 5px inset;
+        outline: 0;
+      }
+      #avatarnot:not([disabled]):active {
+        box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+        transform: translate(2px, 2px);
+      }
+
+      @media (min-width: 768px) {
+        .button-50 {
+          padding: 12px 50px;
+        }
+      }
+      #Timer {
+        display: inline-block;
+        margin-left: 30%;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Get Started With your Avatar</h2>
+
+    <input
+      type="button"
+      id="avatarnot"
+      value="Click if avatar selection page not visible"
+      onClick="displayIframe()"
+      style="margin-bottom: 10px"
+    />
+
+    <iframe id="frame" class="frame" allow="camera *; microphone *"></iframe>
+    <button id="saveavatar" onclick="downloadAvatar()">Download your avatar & proceed to the next page</button>
+    <div id="Timer"></div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+      integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      const subdomain = 'demo';
+      const frame = document.getElementById('frame');
+      frame.src = `https://${subdomain}.readyplayer.me/avatar?frameApi`;
+
+      window.addEventListener('message', subscribe);
+      document.addEventListener('message', subscribe);
+
+      function subscribe(event) {
+        const json = parse(event);
+
+        if (json?.source !== 'readyplayerme') {
+          return;
+        }
+
+        // Susbribe to all events sent from Ready Player Me once frame is ready
+        if (json.eventName === 'v1.frame.ready') {
+          frame.contentWindow.postMessage(
+            JSON.stringify({
+              target: 'readyplayerme',
+              type: 'subscribe',
+              eventName: 'v1.**'
+            }),
+            '*'
+          );
+        }
+
+        // Get avatar GLB URL
+        if (json.eventName === 'v1.avatar.exported') {
+          // console.log(`Avatar URL: ${json.data.url}`);
+          // document.getElementById(
+          //   "avatarUrl"
+          // ).innerHTML = `Avatar URL: ${json.data.url}`;
+          // document.getElementById("frame").hidden = true;
+          const saveAvatar = document.querySelector('#saveavatar');
+          console.log(saveAvatar);
+          saveAvatar.addEventListener('click', async (e) => {
+            e.preventDefault();
+            console.log('downloading');
+            const res = await fetch('/avatar', {
+              headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'access-control-allow-origin': '*'
+              },
+              method: 'POST',
+              credentials: 'include',
+              body: JSON.stringify({
+                url: json.data.url
+              })
+            });
+            const response = await res.json();
+            console.log(response);
+            if (response.status === 'success') {
+              localStorage.setItem('Avatar', response.data);
+              localStorage.setItem('FileName', response.name);
+              //successful response - proceeds to download
+            } else {
+              console.log('Error');
+              //failed response, reload page and try again.
+            }
+          });
+
+          //    OR
+
+          //REDIRECT TO NEW PAGE, ASK USER TO COPY URL AND PASTE IT IN INPUT BOX, FETCH API THERE.
+        }
+
+        // Get user id
+        if (json.eventName === 'v1.user.set') {
+          console.log(`User with id ${json.data.id} set: ${JSON.stringify(json)}`);
+        }
+      }
+
+      function parse(event) {
+        try {
+          return JSON.parse(event.data);
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function displayIframe() {
+        document.getElementById('frame').hidden = false;
+      }
+
+      var elem = document.getElementById('Timer');
+      var timeLeft = 20;
+
+      //download & next page button
+      const downloadAvatar = () => {
+        var timerId = setInterval(countdown, 1000);
+        function countdown() {
+          if (timeLeft == 0) {
+            clearTimeout(timerId);
+            window.location.href = 'webrtc.html';
+          } else {
+            elem.innerHTML = timeLeft + ' seconds remaining';
+            timeLeft--;
+          }
+        }
+
+        setTimeout(() => {
+          console.log('redirecting');
+        }, 20000);
+      };
+    </script>
+  </body>
+</html>

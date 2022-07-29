@@ -1,0 +1,11 @@
+Model Information:
+* title:	Suit Jacket
+* source:	https://sketchfab.com/3d-models/suit-jacket-8aa66be29de94480bb28e42330dd6d80
+* author:	ExposedLeaf (https://sketchfab.com/ExposedLeaf)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Suit Jacket" (https://sketchfab.com/3d-models/suit-jacket-8aa66be29de94480bb28e42330dd6d80) by ExposedLeaf (https://sketchfab.com/ExposedLeaf) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

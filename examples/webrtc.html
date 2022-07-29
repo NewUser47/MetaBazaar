@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Basic Example — Networked-Aframe</title>
+    <meta name="description" content="Basic Example — Networked-Aframe" />
+
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.5.0/socket.io.slim.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.glitch.com/90a30469-f038-4054-be9c-fd1ec94a810d%2Fkitchentest.glb"></script>
+    <script src="/easyrtc/easyrtc.js"></script>
+    <script src="/dist/networked-aframe.js"></script>
+    <script>
+      NAF.schemas.getComponentsOriginal = NAF.schemas.getComponents;
+      NAF.schemas.getComponents = (template) => {
+        if (!NAF.schemas.hasTemplate('#avatar-template')) {
+          NAF.schemas.add({
+            template: '#avatar-template',
+            components: [
+              'position',
+              'rotation',
+              {
+                selector: '.head',
+                component: 'material',
+                property: 'color'
+              }
+            ]
+          });
+        }
+        const components = NAF.schemas.getComponentsOriginal(template);
+        return components;
+      };
+    </script>
+    <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
+    <script src="/js/spawn-in-circle.component.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+  <body>
+    <a-scene
+      networked-scene="
+      room: basic;
+      debug: true;
+      adapter: easyrtc;
+      audio: true;
+      "
+    >
+      <a-assets>
+        <audio id="background" src="asset/audio/background.mp3" preload="auto"></audio>
+        <a-asset-item
+          id="tree"
+          src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/tree-lime/model.gltf"
+        >
+        </a-asset-item>
+        <a-asset-item
+          id="tree1"
+          src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/tree-lime/model.gltf"
+        >
+        </a-asset-item>
+        <a-asset-item
+          id="tree2"
+          src="https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/tree-lime/model.gltf"
+        >
+        </a-asset-item>
+
+        <a-asset-item id="building1" src="asset/building1/scene.gltf"></a-asset-item>
+        <a-asset-item id="building3" src="asset/building3/scene.gltf"></a-asset-item>
+        <a-asset-item id="scifi" src="asset/scifi/scene.gltf"></a-asset-item>
+        <a-asset-item id="cartoon" src="asset/whippet_creampup/scene.gltf"></a-asset-item>
+        <a-asset-item id="cartoon1" src="asset/alchemy_stuff/scene.gltf"></a-asset-item>
+        <a-asset-item id="cloth1" class="clickable" src="asset/clothes/scene.gltf"></a-asset-item>
+        <a-asset-item id="cloth2" class="clickable" src="asset/tshirt_basic_marvelous/scene.gltf"></a-asset-item>
+        <!--  <a-asset-item id="dumbbell" class="clickable" src="asset/dumbbell/scene.gltf"></a-asset-item>
+        <a-asset-item id="grey_hoodie" class="clickable" src="asset/grey_hoodie/scene.gltf"></a-asset-item>
+        <a-asset-item id="grey_sandals" class="clickable" src="asset/grey_sandals/scene.gltf"></a-asset-item>
+        <a-asset-item id="jeans_jacket" class="clickable" src="asset/jeans_jacket/scene.gltf"></a-asset-item>
+        <a-asset-item id="leather_jacket" class="clickable" src="asset/leather_jacket/scene.gltf"></a-asset-item>
+        <a-asset-item id="led_tv_2" class="clickable" src="asset/led_tv_2/scene.gltf"></a-asset-item>
+        <a-asset-item id="long_sofa" class="clickable" src="asset/long_sofa/scene.gltf"></a-asset-item>
+        <a-asset-item id="red_dress" class="clickable" src="asset/red_dress/scene.gltf"></a-asset-item>
+        <a-asset-item id="treadmill" class="clickable" src="asset/treadmill/scene.gltf"></a-asset-item>
+        <a-asset-item id="suit_jacket" class="clickable" src="asset/suit_jacket/scene.gltf"></a-asset-item>
+        <a-asset-item id="nike_air_jordan" class="clickable" src="asset/nike_air_jordan/scene.gltf"></a-asset-item> -->
+      </a-assets>
+
+      <a-assets id="avatarload">
+        <!-- <a-asset-item id="avatar2" src="./asset/avatars/556c80b8-338b-43c6-b899-c44c42cbe672.glb"></a-asset-item> -->
+      </a-assets>
+
+      <template id="avatar-template">
+        <!-- <a-entity>
+          <a-entity class="avatar">
+            <a-entity gltf-model="#avatar2" scale="1 1 1" rotation="0 180 0" position="0 -1.6 0"></a-entity>
+          </a-entity>
+        </a-entity> -->
+      </template>
+      <a-entity id="cameraRig">
+        <a-entity
+          id="player"
+          networked="template:#avatar-template;attachTemplateToLocal:false"
+          camera
+          position="0 1.6 0"
+          spawn-in-circle="radius:3"
+          wasd-controls
+          look-controls
+        >
+        </a-entity>
+      </a-entity>
+
+      <a-entity light="type:ambient;intensity:0.5"></a-entity>
+      <a-entity environment="preset:tron "> </a-entity>
+      <a-entity position="3.5 0 -25" scale="2 2 2" gltf-model="#tree"></a-entity>
+      <a-entity position="-25 0 -25" scale="2 2 2" gltf-model="#tree1"></a-entity>
+      <a-entity position="-25 0 -10" scale="2 2 2" gltf-model="#tree2"></a-entity>
+      <a-entity position="19 0.6 -11" gltf-model="#building1"></a-entity>
+      <a-entity position=" 38 0.2 -2 " scale="0.1 0.1 0.1" gltf-model="#cartoon"></a-entity>
+      <!-- <a-entity position=" 40 0.2 -4 " gltf-model="#cartoon1"></a-entity> -->
+
+      <a-entity position="-10 0 0" scale="3 3 3" gltf-model="#building3"></a-entity>
+      <a-entity position="-5 0 -10" scale="1 1 1" gltf-model="#scifi"></a-entity>
+
+      <!-- clickable -->
+      <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+      <a-entity position="24 0.6 -18" cloth1 class="clickable" scale="1.2 1.2 1.2" gltf-model="#cloth1"></a-entity>
+      <a-entity position="25.5 0.6 -18" cloth2 class="clickable" scale="1.2 1.2 1.2" gltf-model="#cloth2"></a-entity>
+      <!-- <a-entity
+        position="26 0.6 -18"
+        dumbbell
+        class="clickable"
+        scale="0.02 0.02 0.02"
+        gltf-model="#dumbbell"
+      ></a-entity>
+      <a-entity
+        position="27 0.6 -18"
+        grey_hoodie
+        class="clickable"
+        scale="0.04 0.04 0.04"
+        gltf-model="#grey_hoodie"
+      ></a-entity>
+      <a-entity
+        position="28 0.6 -18"
+        grey_sandals
+        class="clickable"
+        scale="0.4 0.4 0.4"
+        gltf-model="#grey_sandals"
+      ></a-entity>
+      <a-entity position="29 0.6 -18" jeans_jacket class="clickable" scale="" gltf-model="#jeans_jacket"></a-entity>
+      <a-entity position="30 0.6 -18" leather_jacket class="clickable" scale="" gltf-model="#leather_jacket"></a-entity>
+      <a-entity position="32 0.6 -18" led_tv_2 class="clickable" scale="" gltf-model="#led_tv_2"></a-entity>
+      <a-entity
+        position="33.5 0.6 -18"
+        long_sofa
+        class="clickable"
+        scale="0.4 0.4 0.4"
+        gltf-model="#long_sofa"
+      ></a-entity>
+      <a-entity position="34.5 0.6 -18" red_dress class="clickable" scale="1 1 1" gltf-model="#red_dress"></a-entity>
+      <a-entity position="35.5 0.6 -18" treadmill class="clickable" scale="" gltf-model="#treadmill"></a-entity>
+      <a-entity
+        position="36.6 0.6 -18"
+        suit_jacket
+        class="clickable"
+        scale="1 1 1"
+        gltf-model="#suit_jacket"
+      ></a-entity>
+      <a-entity
+        position="37.6 0.6 -18"
+        nike_air_jordan
+        class="clickable"
+        scale="0.3 0.3 0.3"
+        gltf-model="#nike_air_jordan"
+      ></a-entity> -->
+    </a-scene>
+
+    <div class="actions">
+      <button id="mic-btn" type="button" class="button">Mute Mic</button>
+    </div>
+
+    <script>
+      // Mic status
+      let micEnabled = true;
+      // Mic button element
+      const micBtnEle = document.getElementById('mic-btn');
+
+      function onConnect() {
+        console.log('onConnect', new Date());
+
+        // Handle mic button click (Mute and Unmute)
+        micBtnEle.addEventListener('click', function () {
+          NAF.connection.adapter.enableMicrophone(!micEnabled);
+          micEnabled = !micEnabled;
+          micBtnEle.textContent = micEnabled ? 'Mute Mic' : 'Unmute Mic';
+        });
+      }
+    </script>
+    <script type="module">
+      // import { modelLink } from "./treeman.js";
+      function modelLink(name, link) {
+        AFRAME.registerComponent(name, {
+          init: function () {
+            let el = this.el;
+            let self = this;
+            self.trees = [];
+            el.addEventListener('model-loaded', (e) => {
+              let tree3D = el.getObject3D('mesh');
+              if (!tree3D) {
+                return;
+              }
+              //console.log('tree3D', tree3D);
+              tree3D.traverse(function (node) {
+                if (node.isMesh) {
+                  console.log(node);
+                  self.trees.push(node);
+                  // node.material = new THREE.MeshStandardMaterial({});
+                }
+              });
+            });
+
+            el.addEventListener('raycaster-intersected', (e) => {
+              self.raycaster = e.detail.el;
+              let intersection = self.raycaster.components.raycaster.getIntersection(el);
+              console.log(
+                'click',
+                intersection.object.name,
+                self.mouseOverObject,
+                intersection.object.name != self.mouseOverObject
+              );
+              // if (self.mouseOverObject != intersection.object.name) {
+              //   intersection.object.material.emissive = new THREE.Color(0xffff00);
+              //   intersection.object.material.emissiveIntensity = 0.5;
+              // } else {
+              //   intersection.object.material.emissive = new THREE.Color(0x000000);
+              //   intersection.object.material.emissiveIntensity = 0.0;
+              // }
+              self.mouseOverObject = intersection.object.name;
+            });
+
+            el.addEventListener('raycaster-intersected-cleared', (e) => {
+              // self.trees.forEach(function (cloth1) {
+              //   cloth1.material.emissive = new THREE.Color(0x000000);
+              //   cloth1.material.emissiveIntensity = 0.0;
+              // });
+              self.mouseOverObject = null;
+            });
+
+            // el.addEventListener("mouseenter", () => {
+            //   let popup = document.getElementById("m3-o");
+            //   popup.style.visibility = "visible";
+            // });
+
+            el.addEventListener('click', function () {
+              console.log(self.mouseOverObject);
+
+              //POPUP SHOW/ HIDE MECHANISM
+              console.log('trigger');
+              let popup = document.getElementById('m3-o');
+              console.log(popup.style.visibility);
+              popup.style.visibility = 'visible';
+              console.log(popup.style.visibility);
+
+              console.log('here');
+              // let qrId = `qr_${name}`;
+              // let redirectId = `redirect_${name}`;
+              let qrBtn = document.getElementById('qrImg');
+              let redirectBtn = document.getElementById('redirect');
+              console.log(qrBtn, redirectBtn);
+
+              qrBtn.setAttribute('src', `./asset/qr_codes/${name}`);
+              redirectBtn.setAttribute('href', link);
+              // let qr = `<img class="qrImg" src="/asset/qr_codes/${name}" alt="ERROR! Can't load QR!">`;
+              // redirectBtn.addEventListener("click", (e) => {
+              //   // modelLink(name, url);
+              //   if (self.mouseOverObject) {
+              //     // console.log("link");
+              //     let url = link;
+              //     let win = window.open(url, "_blank");
+              //     win.focus();
+              //   }
+              // });
+              // qrBtn.appendChild(qr);
+
+              // if (self.mouseOverObject === "defaultMaterial") {
+              //   //console.log('link');
+              //   let url = link;
+              //   let win = window.open(url, "_blank");
+              //   win.focus();
+              // }
+            });
+          }
+        });
+      }
+
+      modelLink('cloth1', 'https://www.google.com');
+      modelLink('dumbbell', 'https://www.youtube.com');
+
+      //AVATAR
+      if (localStorage.getItem('FileName')) {
+        let srcurl = `/asset/avatars/` + localStorage.getItem('FileName');
+        let assetItem = `<a-asset-item id="avatar2" src="${srcurl}"></a-asset-item>`;
+
+        //avatar position can be changed here - will also be beneficial for different spawn locations
+        // let entity = `<a-entity position=" 0 0 0" gltf-model="#avatar" scale="1 1 1"></a-entity>`;
+        let entity = `        <a-entity>
+          <a-entity class="avatar">
+            <a-entity gltf-model="#avatar2" scale="1 1 1" rotation="0 180 0" position="0 -1.6 0"></a-entity>
+          </a-entity>
+        </a-entity>`;
+        document.querySelector('#avatarload').innerHTML += assetItem;
+        document.querySelector('#avatar-template').innerHTML += entity;
+
+        console.log(document.body);
+      }
+    </script>
+  </body>
+</html>
