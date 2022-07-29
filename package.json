@@ -1,14 +1,11 @@
 {
-  "name": "networked-aframe",
-  "version": "0.10.0",
-  "description": "A web framework for building multi-user virtual reality experiences.",
+  "name": "MetaBazaar",
+  "version": "1.0.0",
+  "description": "A vr experience for your online shopping needs.",
   "homepage": "",
   "main": "src/index.js",
-  "author": "Hayden Lee <haydenjameslee@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/networked-aframe/networked-aframe/issues"
-  },
+  "author": "",
+  "license": "",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./server/easyrtc-server.js",
     "dev-socketio": "cross-env NODE_ENV=development node ./server/socketio-server.js",
