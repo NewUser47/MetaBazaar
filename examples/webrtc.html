@@ -95,6 +95,58 @@
         <a-asset-item id="nike_air_jordan" class="clickable" src="asset/nike_air_jordan/scene.gltf"></a-asset-item>
       </a-assets>
 
+
+      <!-- AR-QR -->
+    <a-assets>
+      <img id="qr_greyhoodie" src="asset/qr_codes/grey_hoodie.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_bnwfootball" src="asset/qr_codes/bnw_football.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_dumbbell" src="asset/qr_codes/dumbbell.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_greysandals" src="asset/qr_codes/grey_sandals.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_gymtrainer" src="asset/qr_codes/gym_trainer.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_jeansjacket" src="asset/qr_codes/jeans_jacket.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_leatherjacket" src="asset/qr_codes/leather_jacket.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_ledtv" src="asset/qr_codes/led_tv.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_longsofa" src="asset/qr_codes/long_sofa.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_reddress" src="asset/qr_codes/red_dress.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_suitjacket" src="asset/qr_codes/suit_jacket.jpg">
+    </a-assets>
+
+    <a-assets>
+      <img id="qr_treadmill" src="asset/qr_codes/treadmil.jpg">
+    </a-assets>
+
+
+
       <a-entity id="cameraRig">
         <a-entity
           id="player"
@@ -139,6 +191,9 @@
         scale="0.04 0.04 0.04"
         gltf-model="#grey_hoodie"
       ></a-entity>
+
+      <a-image src="#qr_greyhoodie" position="24 3 -18"></a-image>
+
       <a-entity
         position="28 0.6 -18"
         grey_sandals
@@ -146,8 +201,15 @@
         scale="0.4 0.4 0.4"
         gltf-model="#grey_sandals"
       ></a-entity>
+
+      <a-image src="#qr_greysandals" position="28 3 -18"></a-image>
+
       <a-entity position="29 0.6 -18" jeans_jacket class="clickable" scale="" gltf-model="#jeans_jacket"></a-entity>
+      <a-image src="#qr_jeansjacket" position="29 3 -18"></a-image>
+
       <a-entity position="30 0.6 -18" leather_jacket class="clickable" scale="" gltf-model="#leather_jacket"></a-entity>
+      <a-image src="#qr_leatherjacket" position="30 3 -18"></a-image>
+
       <a-entity position="32 0.6 -18" led_tv_2 class="clickable" scale="" gltf-model="#led_tv_2"></a-entity>
       <a-entity
         position="33.5 0.6 -18"
@@ -156,8 +218,14 @@
         scale="0.4 0.4 0.4"
         gltf-model="#long_sofa"
       ></a-entity>
+      <a-image src="#qr_sofa" position="33.5 3 -18"></a-image>
+
       <a-entity position="34.5 0.6 -18" red_dress class="clickable" scale="1 1 1" gltf-model="#red_dress"></a-entity>
+      <a-image src="#qr_reddress" position="34.5 3 -18"></a-image>
+
       <a-entity position="35.5 0.6 -18" treadmill class="clickable" scale="" gltf-model="#treadmill"></a-entity>
+      <a-image src="#qr_treadmill" position="35.5 3 -18"></a-image>
+
       <a-entity
         position="36.6 0.6 -18"
         suit_jacket
@@ -165,6 +233,8 @@
         scale="1 1 1"
         gltf-model="#suit_jacket"
       ></a-entity>
+      <a-image src="#qr_suitjacket" position="36.6 3 -18"></a-image>
+
       <a-entity
         position="37.6 0.6 -18"
         nike_air_jordan
@@ -276,8 +346,8 @@
         'grey_hoodie',
         'https://www.flipkart.com/flamboyant-full-sleeve-self-design-women-sweatshirt/p/itm825db212ef2ba'
       );
-      modelLink('grey_sandals', 'https://www.youtube.com');
-      modelLink('long_sofa', 'https://www.youtube.com');
+      modelLink('grey_sandals', 'https://www.flipkart.com/campus-sd-053-men-grey-casual/p/itm5bd16d8ee1dbc?pid=SNDFZ56MXZBU2XNW&lid=LSTSNDFZ56MXZBU2XNW2QWITY&marketplace=FLIPKART&q=grey+sandals&store=osp%2Fcil%2Fe83&srno=s_1_11&otracker=search&otracker1=search&fm=Search&iid=51f5dd25-50e8-4221-a8e8-4d6a88ecad84.SNDFZ56MXZBU2XNW.SEARCH&ppt=sp&ppn=sp&ssid=38b2r3l82o0000001659188992750&qH=e832d91c8f2eca87');
+      modelLink('long_sofa', 'https://www.flipkart.com/limraz-furniture-fabric-3-seater-sofa/p/itmfad1720054ad9?pid=SOFG8YZK8QB35ZC8&lid=LSTSOFG8YZK8QB35ZC8R3XEWP&marketplace=FLIPKART&q=sofa&store=wwe%2Fc3z&srno=s_1_4&otracker=search&otracker1=search&fm=Search&iid=e49b903d-7839-498e-a058-7bb341ed3d5a.SOFG8YZK8QB35ZC8.SEARCH&ppt=sp&ppn=sp&ssid=y8um06ggdc0000001659189044830&qH=7a2cc8b443e7cf56');
       modelLink(
         'led_tv_2',
         'https://www.flipkart.com/samsung-123-cm-49-inch-ultra-hd-4k-curved-led-smart-tizen-tv/p/itmehym3kebzhdsg'
@@ -291,7 +361,7 @@
       );
       modelLink('jeans_jacket', 'https://www.flipkart.com/here-now-full-sleeve-washed-men-jacket/p/itmfghtz36v8hfgd');
       modelLink('leather_jacket', 'https://www.flipkart.com/justanned-full-sleeve-solid-men-jacket/p/itmda7078607efe6');
-      modelLink('red_dress', 'https://www.youtube.com');
+      modelLink('red_dress', 'https://www.flipkart.com/aahwan-women-fit-flare-red-dress/p/itm049e8edf13a1b?pid=DREGBQ978SHHZ9GD&lid=LSTDREGBQ978SHHZ9GDKWQOYP&marketplace=FLIPKART&q=red+dress&store=clo&srno=s_1_20&otracker=search&otracker1=search&fm=Search&iid=en_wYu9jNUDQBUKqmnNStxJSWPnD26LDvzKvUVv4JAI7GtVezo4MuFb4uwduLjgnGR1SoLjullN6setgantgZy9Pw%3D%3D&ppt=sp&ppn=sp&ssid=ndclokab7k0000001659188888499&qH=9fc22438e26fbca8');
       // modelLink('dumbbell', 'https://www.youtube.com');
 
       //AVATAR
