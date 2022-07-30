@@ -75,6 +75,7 @@
         </a-asset-item>
 
         <a-asset-item id="building1" src="asset/building1/scene.gltf"></a-asset-item>
+        <!-- <a-asset-item id="convenience_store" src="asset/convenience_store/scene.gltf"></a-asset-item> -->
         <a-asset-item id="building3" src="asset/building3/scene.gltf"></a-asset-item>
         <a-asset-item id="scifi" src="asset/scifi/scene.gltf"></a-asset-item>
         <a-asset-item id="cartoon" src="asset/whippet_creampup/scene.gltf"></a-asset-item>
@@ -171,10 +172,11 @@
 
       <a-entity environment="preset:tron "> </a-entity>
       <a-entity light="type:ambient;intensity:0.5"></a-entity>
-      <!-- <a-entity position="3.5 0 -25" scale="2 2 2" gltf-model="#tree"></a-entity>
+      <a-entity position="3.5 0 -25" scale="2 2 2" gltf-model="#tree"></a-entity>
       <a-entity position="-25 0 -25" scale="2 2 2" gltf-model="#tree1"></a-entity>
-      <a-entity position="-25 0 -10" scale="2 2 2" gltf-model="#tree2"></a-entity> -->
+      <a-entity position="-25 0 -10" scale="2 2 2" gltf-model="#tree2"></a-entity>
       <a-entity position="19 0.6 -11" gltf-model="#building1" scale="0.75 0.75 0.5"></a-entity>
+      <!-- <a-entity position="5 0.6 -15" gltf-model="#convenience_store" scale="0.75 0.75 0.5"></a-entity> -->
       <!-- <a-entity position=" 38 0.2 -2 " scale="0.1 0.1 0.1" gltf-model="#cartoon"></a-entity> -->
       <!-- <a-entity position=" 40 0.2 -4 " gltf-model="#cartoon1"></a-entity> -->
 
@@ -206,7 +208,7 @@
 
       <a-entity
         position="30.5 0.9 -23"
-        grey_hoodie
+        football
         class="clickable"
         scale="0.006 0.006 0.006"
         gltf-model="#football"
@@ -264,7 +266,7 @@
 
       <a-entity
         position="29 0.6 -25.5"
-        treadmill
+        gym_trainer
         class="clickable"
         scale="0.01 0.01 0.01"
         gltf-model="#gym_trainer"
@@ -393,32 +395,30 @@
         'grey_hoodie',
         'https://www.flipkart.com/flamboyant-full-sleeve-self-design-women-sweatshirt/p/itm825db212ef2ba'
       );
-      modelLink(
-        'grey_sandals',
-        'https://www.flipkart.com/campus-sd-053-men-grey-casual/p/itm5bd16d8ee1dbc?pid=SNDFZ56MXZBU2XNW&lid=LSTSNDFZ56MXZBU2XNW2QWITY&marketplace=FLIPKART&q=grey+sandals&store=osp%2Fcil%2Fe83&srno=s_1_11&otracker=search&otracker1=search&fm=Search&iid=51f5dd25-50e8-4221-a8e8-4d6a88ecad84.SNDFZ56MXZBU2XNW.SEARCH&ppt=sp&ppn=sp&ssid=38b2r3l82o0000001659188992750&qH=e832d91c8f2eca87'
-      );
-      modelLink(
-        'long_sofa',
-        'https://www.flipkart.com/limraz-furniture-fabric-3-seater-sofa/p/itmfad1720054ad9?pid=SOFG8YZK8QB35ZC8&lid=LSTSOFG8YZK8QB35ZC8R3XEWP&marketplace=FLIPKART&q=sofa&store=wwe%2Fc3z&srno=s_1_4&otracker=search&otracker1=search&fm=Search&iid=e49b903d-7839-498e-a058-7bb341ed3d5a.SOFG8YZK8QB35ZC8.SEARCH&ppt=sp&ppn=sp&ssid=y8um06ggdc0000001659189044830&qH=7a2cc8b443e7cf56'
-      );
+      modelLink('grey_sandals', 'https://www.flipkart.com/campus-sd-053-men-grey-casual/p/itm5bd16d8ee1dbc');
+      modelLink('long_sofa', 'https://www.flipkart.com/limraz-furniture-fabric-3-seater-sofa/p/itmfad1720054ad9');
       modelLink(
         'led_tv_2',
         'https://www.flipkart.com/samsung-123-cm-49-inch-ultra-hd-4k-curved-led-smart-tizen-tv/p/itmehym3kebzhdsg'
       );
-      modelLink('nike_air_jordan', 'https://www.youtube.com');
-      modelLink('suit_jacket', 'https://www.youtube.com');
-      modelLink('cloth2', 'https://www.youtube.com');
+      modelLink('nike_air_jordan', 'https://www.flipkart.com/nike-air-max-sc-running-shoes-men/p/itm7ba7d4e2b6aca');
+      modelLink(
+        'suit_jacket',
+        'https://www.flipkart.com/louis-philippe-solid-single-breasted-formal-men-blazer/p/itm3c7c06138c9c4'
+      );
+      modelLink('cloth2', 'https://www.flipkart.com/mokito-solid-men-round-neck-black-t-shirt/p/itm2253218aa101c');
       modelLink(
         'treadmill',
         'https://www.flipkart.com/reach-t-90-manual-treadmill-fitness-equipment-walking-jogging-exercise-home-gym/p/itme84d710d26450'
       );
       modelLink('jeans_jacket', 'https://www.flipkart.com/here-now-full-sleeve-washed-men-jacket/p/itmfghtz36v8hfgd');
       modelLink('leather_jacket', 'https://www.flipkart.com/justanned-full-sleeve-solid-men-jacket/p/itmda7078607efe6');
+      modelLink('red_dress', 'https://www.flipkart.com/aahwan-women-fit-flare-red-dress/p/itm049e8edf13a1b');
+      modelLink('gym_trainer', 'https://www.flipkart.com/gofitpro-20-1-bench-multipurpose-fitness/p/itm47db4f68b21ae');
       modelLink(
-        'red_dress',
-        'https://www.flipkart.com/aahwan-women-fit-flare-red-dress/p/itm049e8edf13a1b?pid=DREGBQ978SHHZ9GD&lid=LSTDREGBQ978SHHZ9GDKWQOYP&marketplace=FLIPKART&q=red+dress&store=clo&srno=s_1_20&otracker=search&otracker1=search&fm=Search&iid=en_wYu9jNUDQBUKqmnNStxJSWPnD26LDvzKvUVv4JAI7GtVezo4MuFb4uwduLjgnGR1SoLjullN6setgantgZy9Pw%3D%3D&ppt=sp&ppn=sp&ssid=ndclokab7k0000001659188888499&qH=9fc22438e26fbca8'
+        'football',
+        'https://www.flipkart.com/apps-sports-football-size-5-air-pump-size-5-pack-1-white-black/p/itmc7bc6400ed37e'
       );
-      // modelLink('dumbbell', 'https://www.youtube.com');
 
       //AVATAR
       if (localStorage.getItem('FileName')) {
