@@ -7,6 +7,8 @@
 
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.5.0/socket.io.slim.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
+
     <script src="/easyrtc/easyrtc.js"></script>
     <script src="/dist/networked-aframe.js"></script>
     <script>
@@ -96,6 +98,7 @@
         
         <a-asset-item id="coffee" class="clickable" src="asset/coffee_shop/scene.gltf"></a-asset-item>
       </a-assets>
+      
 
       <!-- AR-QR -->
       <a-assets>
@@ -171,16 +174,17 @@
       <a-entity position="-25 0 -25" scale="2 2 2" gltf-model="#tree1"></a-entity>
       <a-entity position="-25 0 -10" scale="2 2 2" gltf-model="#tree2"></a-entity>
       <a-entity position="19 0.6 -11" gltf-model="#building1" scale="0.75 0.75 0.5"></a-entity>
+      <a-entity position="-5 0.6 -11" gltf-model="#coffee" scale="0.34 0.34 0.34"></a-entity>
       <!-- <a-entity position=" 38 0.2 -2 " scale="0.1 0.1 0.1" gltf-model="#cartoon"></a-entity> -->
       <!-- <a-entity position=" 40 0.2 -4 " gltf-model="#cartoon1"></a-entity> -->
 
       <a-entity position="-10 0 0" scale="3 3 3" gltf-model="#building3"></a-entity>
-      <a-entity position="-5 0 -10" scale="1 1 1" gltf-model="#scifi"></a-entity>
+      <a-entity position="14.4 0 -14" scale="1 1 1" gltf-model="#scifi"></a-entity>
 
       <!-- clickable -->
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
-      <a-entity position="21.5 0.6 -18" cloth1 class="clickable" scale="1.2 1.2 1.2" gltf-model="#cloth1"></a-entity>
-      <a-entity position="22.5 0.3 -18" cloth2 class="clickable" scale="1.2 1.2 1.2" gltf-model="#cloth2"></a-entity>
+      <a-entity position="21.5 0.6 -18" cloth1 class="clickable" scale="1.5 1.5 1.5" gltf-model="#cloth1"></a-entity>
+      <a-entity position="23 0.3 -18" cloth2 class="clickable" scale="1.5 1.5 1.5" gltf-model="#cloth2"></a-entity>
       <!-- <a-entity
         position="26 0.6 -18"
         dumbbell
@@ -191,14 +195,14 @@
       <a-image src="#qr_dumbbell" position="26 3 -18"></a-image> -->
 
       <a-entity
-        position="23.5 0.6 -18"
+        position="24 0.5 -18"
         grey_hoodie
         class="clickable"
-        scale="0.04 0.04 0.04"
+        scale="0.045 0.045 0.045"
         gltf-model="#grey_hoodie"
       ></a-entity>
 
-      <a-image src="#qr_greyhoodie" position="23.5 3.1 -18"></a-image>
+      <a-image src="#qr_greyhoodie" position="24 3.3 -18"></a-image>
 
       <!-- <a-entity
         position="28 0.6 -18"
@@ -210,10 +214,10 @@
 
       <a-image src="#qr_greysandals" position="28 3 -18"></a-image> -->
 
-      <a-entity position="25 0.6 -19.5" jeans_jacket class="clickable" scale="" gltf-model="#jeans_jacket"></a-entity>
-      <a-image src="#qr_jeansjacket" position="25 3 -19.5"></a-image>
+      <a-entity position="25 1.3 -19.5" jeans_jacket class="clickable" scale="" gltf-model="#jeans_jacket"></a-entity>
+      <a-image src="#qr_jeansjacket" position="25 3.1 -19.52"></a-image>
 
-      <a-entity position="21.5 1.6 -19.9" leather_jacket class="clickable" scale="" gltf-model="#leather_jacket"></a-entity>
+      <a-entity position="21.5 1.6 -19.85" leather_jacket class="clickable" scale="1.5 1.5 1.5" gltf-model="#leather_jacket"></a-entity>
       <a-image src="#qr_leatherjacket" position="21.5 3 -19.9"></a-image>
 
       <!-- <a-entity position="32 0.6 -18" led_tv_2 class="clickable" scale="" gltf-model="#led_tv_2"></a-entity> -->
@@ -226,8 +230,8 @@
       ></a-entity>
       <a-image src="#qr_sofa" position="33.5 3 -18"></a-image> -->
 
-      <a-entity position="21.5 0.6 -18.5" red_dress class="clickable" scale="1 1 1" gltf-model="#red_dress"></a-entity>
-      <a-image src="#qr_reddress" position="34.5 3 -18"></a-image>
+      <a-entity position="26 0.6 -18.5" red_dress class="clickable" scale="1.5 1.5 1.5" gltf-model="#red_dress"></a-entity>
+      <a-image src="#qr_reddress" position="21.5 3 -18.5"></a-image>
 
       <!-- <a-entity position="35.5 0.6 -18" treadmill class="clickable" scale="" gltf-model="#treadmill"></a-entity>
       <a-image src="#qr_treadmill" position="35.5 3 -18"></a-image> -->
