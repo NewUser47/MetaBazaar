@@ -7,11 +7,11 @@
 
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.5.0/socket.io.slim.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
-    <script src="https://cdn.glitch.com/90a30469-f038-4054-be9c-fd1ec94a810d%2Fkitchentest.glb"></script>
     <script src="/easyrtc/easyrtc.js"></script>
     <script src="/dist/networked-aframe.js"></script>
     <script>
+      console.log('docb4', document.body);
+
       NAF.schemas.getComponentsOriginal = NAF.schemas.getComponents;
       NAF.schemas.getComponents = (template) => {
         if (!NAF.schemas.hasTemplate('#avatar-template')) {
@@ -33,6 +33,7 @@
       };
     </script>
     <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
     <script src="/js/spawn-in-circle.component.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
@@ -45,6 +46,16 @@
       audio: true;
       "
     >
+      <a-assets id="loadavatar">
+        <a-asset-item id="avatar4" src="./asset/avatars/e96db9d6-a01d-456b-81ec-969c6afe7e1e.glb"></a-asset-item>
+
+        <template id="avatar-template">
+          <a-entity class="avatar">
+            <a-entity gltf-model="#avatar4" scale="1 1 1" rotation="0 180 0" position="0 -1.6 0"></a-entity>
+          </a-entity>
+        </template>
+      </a-assets>
+
       <a-assets>
         <audio id="background" src="asset/audio/background.mp3" preload="auto"></audio>
         <a-asset-item
@@ -70,7 +81,8 @@
         <a-asset-item id="cartoon1" src="asset/alchemy_stuff/scene.gltf"></a-asset-item>
         <a-asset-item id="cloth1" class="clickable" src="asset/clothes/scene.gltf"></a-asset-item>
         <a-asset-item id="cloth2" class="clickable" src="asset/tshirt_basic_marvelous/scene.gltf"></a-asset-item>
-        <!--  <a-asset-item id="dumbbell" class="clickable" src="asset/dumbbell/scene.gltf"></a-asset-item>
+        <!-- <a-asset-item id="avatar4" src="./asset/avatars/ea2c4214-01ea-4fdf-a49f-3c2afebb6100.glb"></a-asset-item> -->
+        <a-asset-item id="dumbbell" class="clickable" src="asset/dumbbell/scene.gltf"></a-asset-item>
         <a-asset-item id="grey_hoodie" class="clickable" src="asset/grey_hoodie/scene.gltf"></a-asset-item>
         <a-asset-item id="grey_sandals" class="clickable" src="asset/grey_sandals/scene.gltf"></a-asset-item>
         <a-asset-item id="jeans_jacket" class="clickable" src="asset/jeans_jacket/scene.gltf"></a-asset-item>
@@ -80,20 +92,9 @@
         <a-asset-item id="red_dress" class="clickable" src="asset/red_dress/scene.gltf"></a-asset-item>
         <a-asset-item id="treadmill" class="clickable" src="asset/treadmill/scene.gltf"></a-asset-item>
         <a-asset-item id="suit_jacket" class="clickable" src="asset/suit_jacket/scene.gltf"></a-asset-item>
-        <a-asset-item id="nike_air_jordan" class="clickable" src="asset/nike_air_jordan/scene.gltf"></a-asset-item> -->
+        <a-asset-item id="nike_air_jordan" class="clickable" src="asset/nike_air_jordan/scene.gltf"></a-asset-item>
       </a-assets>
 
-      <a-assets id="avatarload">
-        <!-- <a-asset-item id="avatar2" src="./asset/avatars/556c80b8-338b-43c6-b899-c44c42cbe672.glb"></a-asset-item> -->
-      </a-assets>
-
-      <template id="avatar-template">
-        <!-- <a-entity>
-          <a-entity class="avatar">
-            <a-entity gltf-model="#avatar2" scale="1 1 1" rotation="0 180 0" position="0 -1.6 0"></a-entity>
-          </a-entity>
-        </a-entity> -->
-      </template>
       <a-entity id="cameraRig">
         <a-entity
           id="player"
@@ -104,11 +105,12 @@
           wasd-controls
           look-controls
         >
+          <a-sphere class="head" visible="false" random-color></a-sphere>
         </a-entity>
       </a-entity>
 
-      <a-entity light="type:ambient;intensity:0.5"></a-entity>
       <a-entity environment="preset:tron "> </a-entity>
+      <a-entity light="type:ambient;intensity:0.5"></a-entity>
       <a-entity position="3.5 0 -25" scale="2 2 2" gltf-model="#tree"></a-entity>
       <a-entity position="-25 0 -25" scale="2 2 2" gltf-model="#tree1"></a-entity>
       <a-entity position="-25 0 -10" scale="2 2 2" gltf-model="#tree2"></a-entity>
@@ -123,7 +125,7 @@
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
       <a-entity position="24 0.6 -18" cloth1 class="clickable" scale="1.2 1.2 1.2" gltf-model="#cloth1"></a-entity>
       <a-entity position="25.5 0.6 -18" cloth2 class="clickable" scale="1.2 1.2 1.2" gltf-model="#cloth2"></a-entity>
-      <!-- <a-entity
+      <a-entity
         position="26 0.6 -18"
         dumbbell
         class="clickable"
@@ -169,7 +171,7 @@
         class="clickable"
         scale="0.3 0.3 0.3"
         gltf-model="#nike_air_jordan"
-      ></a-entity> -->
+      ></a-entity>
     </a-scene>
 
     <div class="actions">
@@ -252,39 +254,14 @@
               console.log(self.mouseOverObject);
 
               //POPUP SHOW/ HIDE MECHANISM
-              console.log('trigger');
-              let popup = document.getElementById('m3-o');
-              console.log(popup.style.visibility);
-              popup.style.visibility = 'visible';
-              console.log(popup.style.visibility);
-
               console.log('here');
-              // let qrId = `qr_${name}`;
-              // let redirectId = `redirect_${name}`;
-              let qrBtn = document.getElementById('qrImg');
-              let redirectBtn = document.getElementById('redirect');
-              console.log(qrBtn, redirectBtn);
-
-              qrBtn.setAttribute('src', `./asset/qr_codes/${name}`);
-              redirectBtn.setAttribute('href', link);
-              // let qr = `<img class="qrImg" src="/asset/qr_codes/${name}" alt="ERROR! Can't load QR!">`;
-              // redirectBtn.addEventListener("click", (e) => {
-              //   // modelLink(name, url);
-              //   if (self.mouseOverObject) {
-              //     // console.log("link");
-              //     let url = link;
-              //     let win = window.open(url, "_blank");
-              //     win.focus();
-              //   }
-              // });
-              // qrBtn.appendChild(qr);
-
-              // if (self.mouseOverObject === "defaultMaterial") {
-              //   //console.log('link');
-              //   let url = link;
-              //   let win = window.open(url, "_blank");
-              //   win.focus();
-              // }
+              // modelLink(name, url);
+              if (self.mouseOverObject) {
+                // console.log("link");
+                let url = link;
+                let win = window.open(url, '_blank');
+                win.focus();
+              }
             });
           }
         });
@@ -295,20 +272,13 @@
 
       //AVATAR
       if (localStorage.getItem('FileName')) {
-        let srcurl = `/asset/avatars/` + localStorage.getItem('FileName');
-        let assetItem = `<a-asset-item id="avatar2" src="${srcurl}"></a-asset-item>`;
+        let srcurl = `./asset/avatars/` + localStorage.getItem('FileName');
+        console.log(srcurl);
+        let assetItem = `<a-asset-item id="avatar4" src="${srcurl}"></a-asset-item>`;
 
-        //avatar position can be changed here - will also be beneficial for different spawn locations
-        // let entity = `<a-entity position=" 0 0 0" gltf-model="#avatar" scale="1 1 1"></a-entity>`;
-        let entity = `        <a-entity>
-          <a-entity class="avatar">
-            <a-entity gltf-model="#avatar2" scale="1 1 1" rotation="0 180 0" position="0 -1.6 0"></a-entity>
-          </a-entity>
-        </a-entity>`;
-        document.querySelector('#avatarload').innerHTML += assetItem;
-        document.querySelector('#avatar-template').innerHTML += entity;
+        let avatar = document.querySelector('#avatar4');
 
-        console.log(document.body);
+        avatar.setAttribute('src', srcurl);
       }
     </script>
   </body>

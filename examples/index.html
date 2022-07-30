@@ -18,15 +18,15 @@
         } else {
           window.location.href = './webrtc.html';
         }
-        // if (localStorage.getItem('FileName')) {
-        //   let srcurl = `./asset/avatars/` + localStorage.getItem('FileName');
-        //   let assetItem = `<a-asset-item id="avatar" src="${srcurl}"></a-asset-item>`;
+        if (localStorage.getItem('FileName')) {
+          let srcurl = `./asset/avatars/` + localStorage.getItem('FileName');
+          let assetItem = `<a-asset-item id="avatar" src="${srcurl}"></a-asset-item>`;
 
-        //   //avatar position can be changed here - will also be beneficial for different spawn locations
-        //   let entity = `<a-entity position=" 0 0 0" gltf-model="#avatar" scale="1 1 1"></a-entity>`;
-        //   document.querySelector('#tree2').insertAdjacentHTML('afterend', assetItem);
-        //   document.querySelector('#b4avatar').insertAdjacentHTML('afterend', entity);
-        // }
+          //avatar position can be changed here - will also be beneficial for different spawn locations
+          let entity = `<a-entity position=" 0 0 0" gltf-model="#avatar" scale="1 1 1"></a-entity>`;
+          document.querySelector('#tree2').insertAdjacentHTML('afterend', assetItem);
+          document.querySelector('#b4avatar').insertAdjacentHTML('afterend', entity);
+        }
       };
     </script>
     <style>
